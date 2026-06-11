@@ -1,0 +1,427 @@
+body{
+    margin: 0;
+    background-color: beige;
+    font-family: 'Inter', sans-serif;   
+}
+#es{
+    margin-top: 50px;
+}
+.dashboard-list{
+    list-style-type: none;
+    background-color: aliceblue;
+    max-width: 600px;
+}
+.dashboard-list a{
+    text-decoration: none;
+    color: rgb(121, 118, 118);
+    
+}
+#up-nav{
+    height: 40px;
+    width: 100%;
+    background-color: aliceblue;
+    position: fixed;
+    top: 0;
+}
+#nav-button{
+    margin: 5px;
+    border: 0;
+    background-color: rgb(148, 255, 134);
+    padding: 3px 5px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    transition: .2s ease;
+}
+#nav-button:hover{
+    background-color: rgb(69, 255, 45);
+}
+#nav-button:active{
+    opacity: .5;
+}
+#menu-menu{
+    text-align: center;
+    background-color: rgb(94, 255, 161);
+    width: 140px ;
+    margin-left: 20px;
+    margin-top: 50px;
+    padding: 0;
+    max-height: 0;
+    font-size: 0;
+    transition: .25s ease ;
+    position: fixed;
+    top: 0;
+    border-radius: 12px;
+}
+#menu-menu li{
+    list-style-type: none;
+    margin-top: 5px;
+}
+#menu-menu a {
+    display: block;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.59);
+
+}
+#menu-menu.active{
+    padding: 5px 10px;
+    max-height: 350px;
+    font-size: 19px;
+}
+#menu-menu li:hover{
+    background-color: lime;
+}
+#menu-menu ul{
+    margin: 0;
+    padding: 0;
+}
+#timer-display{
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border: 0;
+    background-color: aliceblue;
+    font-size: 40px;
+    margin-top: 50px;
+    height: 80px;
+}
+#main-control-buttons{
+    text-align: center;
+    margin-top: 30px;
+    
+}
+#main-control-buttons button{
+    text-align: center;
+    margin-right:20px ;
+    border: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(143, 255, 143);
+
+}
+#time-set-buttons{
+    text-align: center;
+    margin-top: 30px;
+    margin: 0 auto;
+    width: 510px;
+}
+#time-set-buttons button{
+    margin-top: 20px;
+    text-align: center;
+    margin-right:20px ;
+    border: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgb(143, 255, 143);
+}
+
+#buttons-container button{
+    border: 2px solid #000;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: transparent;
+    transition: .2s ease;
+
+}
+#buttons-container button::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgb(72, 197, 56);
+    transition: .3s;
+    z-index: -1;
+}
+#buttons-container button:hover::before{
+    right: 0;
+}
+#buttons-container button:hover{
+    color: rgb(255, 255, 255);
+    transform: translateY(-5px);
+
+}
+#buttons-container button:active{
+    transform: translateY(5px);
+}
+#display-input-time{
+    border: 0;
+    border-radius: 12px;
+    background-color: antiquewhite;
+}
+#display-input-time button{
+    border: 2px solid #000;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: transparent;
+    transition: .2s ease;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px ;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+}
+#display-input-time button::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgb(98, 180, 87);
+    transition: .3s;
+    z-index: -1;
+}
+#display-input-time button:hover::before{
+    animation: button-hover-effect 2s infinite;
+}
+#display-input-time button:hover{
+    transform: translateY(-5px);
+    animation: color-effect 2s infinite
+}
+@keyframes button-hover-effect 
+{
+    0%{right: -100%;}
+    50%{right: 100%;}
+    100%{right: -100%;}
+}
+@keyframes color-effect
+{
+    0%{color: black;}
+    25%{color: white;}
+    50%{color: black;}
+    75%{color: white;}
+    100%{color: black;}
+}
+#play-button{
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    max-width: 500px;
+    height: 50px;
+    margin-top: 140px ;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 0;
+    background: transparent;
+    border: 2px solid black;
+    text-align: center;
+    overflow: hidden;
+}
+#play-button::before{ 
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right:  -100%;
+    background: rgb(132, 248, 132);
+    z-index: -1;
+    transition: .3s;
+    top: 0;
+}
+#play-button.active::before{
+    animation: button-hover-effect 2s infinite;
+}
+#play-button.active{
+    animation: color-effect 2s infinite;
+}
+#display{
+    border: 0;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    margin-top: 100px;
+    height: 70px;
+    width: 50%;
+    max-width: 800px;
+    font-size:30px ;
+    border-radius: 20px;
+}
+#reset-button{
+    display: block;
+    margin:0 auto ;
+    margin-top: 20px;
+    height: 50px;
+    width: 50%;
+    max-width: 500px;
+    border: 2px solid black;
+    border-radius:20px;
+    background: transparent;
+    transition: .3s;
+    font-size: 30px;
+    overflow: hidden;
+}
+@keyframes rotation{
+    0%{transform: rotate(0);}
+    50%{transform: rotate(45deg);}
+    100%{transform: rotate(0);}
+}
+@keyframes background-pulsing
+{
+    0%{background: rgb(235, 255, 213);}
+    25%{background: transparent;}
+    50%{background: rgb(193, 255, 135);}
+    60%{background: transparent;}
+    70%{background: rgb(104, 255, 124);}
+    80%{background: transparent;}
+    90%{background: rgb(0, 255, 34);}
+    100%{background: transparent;}
+}
+@keyframes fontpulsing-scalepulsing 
+{
+    0%{font-size: 200%;}
+    50%{font-size: 100%;
+        transform: scale(1.3);
+        background: rgb(116, 255, 116);}
+    100%{font-size: 20px;
+        transform: scale(1);}
+}
+#split{
+    display: block;
+    margin:0 auto ;
+    margin-top: 20px;
+    height: 50px;
+    width: 50%;
+    max-width: 500px;
+    border: 2px solid black;
+    border-radius:20px;
+    background: transparent;
+    transition: .3s;
+    font-size: 20px;
+    overflow: hidden;
+}
+#split-container{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+#bookmarks{
+    margin-top: 200px;
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.link{
+    margin: 10px;
+    text-decoration: none;
+}
+.linkImg{
+    border-radius: 50%;
+    border: 10px solid transparent;
+}
+.linkImg:hover{
+    padding: 4px;
+    border: 5px solid rgba(0, 0, 0, 0.097);
+}
+.clock {
+  width: 250px;
+  height: 250px;
+  border: 8px solid black;
+  border-radius: 50%;
+  position: relative;
+  margin: 50px auto;
+}
+
+.hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: bottom;
+  transform: translateX(-50%) rotate(0deg);
+}
+
+.hour {
+  width: 6px;
+  height: 60px;
+  background: black;
+}
+
+.min {
+  width: 4px;
+  height: 80px;
+  background: black;
+}
+
+.sec {
+  width: 2px;
+  height: 90px;
+  background: red;
+}
+
+.center {
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.numbers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#time{
+    text-align: center;
+    font-size: 50px;
+}
+
+.addBookmark{
+    display: block;
+    margin: 40px auto;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background: wheat;
+    border-radius: 50%;
+    transition: .2s ease;
+    border: 0;
+}
+.addBookmark:hover{
+    transform: scale(1.2);
+}
+.bookmarkAdder{
+    background-color: wheat;
+    border: 2px solid black;
+}
+.inputName{
+    text-align: start;
+    margin: 0;
+    font-size: 15px;
+    color: gray;
+}
+.dialogInput{
+    margin: 10px;
+    border: 2px solid black;
+    background: transparent;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    transition: .4s;
+    user-select: none;
+}
+.addBookmarkDialog{
+    background-color: wheat;
+    user-select: none;
+}
+.dialogInput:hover{
+    background: rgb(107, 247, 107);
+    transform: rotate(360deg);
+}
+.dialogInput:active{
+    transform: rotate(-360deg);
+}
