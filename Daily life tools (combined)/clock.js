@@ -6,8 +6,8 @@ for (let i = 1; i <= 12; i++) {
   num.innerText = i;
   num.style.position = "absolute";
 
-  const angle = (i * 30) * (Math.PI / 180); // 360/12 = 30deg
-  const radius = 105; // distance from center
+  const angle = (i * 30) * (Math.PI / 180);
+  const radius = 105; 
 
   const x = 125 + radius * Math.sin(angle);
   const y = 125 - radius * Math.cos(angle);
