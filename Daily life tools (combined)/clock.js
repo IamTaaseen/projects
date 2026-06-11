@@ -49,7 +49,7 @@ function updateTime(){
     const nowHour = timeNow.getHours();
     const nowMs = timeNow.getMilliseconds();
 
-    formatedTime = String(nowHour).padStart(2,0)+":"+String(nowMin).padStart(2,0)+":"+String(nowSec).padStart(2,0)+"."+String(nowMs);
+    formatedTime = String(nowHour).padStart(2,0)+":"+String(nowMin).padStart(2,0)+":"+String(nowSec).padStart(2,0)+"."+String(nowMs).padStart(3,0);
 }
 
 updateTime();
