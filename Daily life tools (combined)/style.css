@@ -1,7 +1,11 @@
 body{
     margin: 0;
+    left: 0;
     background-color: beige;
     font-family: 'Inter', sans-serif;   
+}
+body.no-scroll{
+    overflow: hidden;
 }
 #es{
     margin-top: 50px;
@@ -22,6 +26,7 @@ body{
     background-color: aliceblue;
     position: fixed;
     top: 0;
+    z-index: 1;
 }
 #nav-button{
     margin: 5px;
@@ -52,6 +57,7 @@ body{
     position: fixed;
     top: 0;
     border-radius: 12px;
+    z-index: 1000;
 }
 #menu-menu li{
     list-style-type: none;
@@ -307,9 +313,9 @@ body{
 #bookmarks{
     margin-top: 200px;
     text-align: center;
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 .link{
     margin: 10px;
@@ -424,4 +430,107 @@ body{
 }
 .dialogInput:active{
     transform: rotate(-360deg);
+}
+.NoteTakerDialog{
+    background: rgb(235, 255, 198);
+    padding:10px ;
+    height: fit-content;
+    width: 300px;
+    text-align: center;
+    border: 5px solid black;
+    z-index: 1;
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    margin: 100px auto;
+    border-radius: 30px;
+    display: none;
+}
+.addNoteButton{
+    margin: 150px auto;
+    display: block;
+    text-align: center;
+    border: 0;
+    padding: 5px 10px;
+    background: rgb(255, 62, 255);
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+@media (hover: hover){
+.addNoteButton:hover{
+    transform: rotate(5deg) scale(1.3);
+}}
+.addNoteButton:active{
+    transform: rotate(-5deg);
+}
+.NoteTakerInput{
+    height: 200px;
+    resize: none;
+    border: 0;
+    border-radius: 12px;
+    padding: 15px ;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.NoteTakerInput::-webkit-scrollbar{
+    display: none;
+}
+.NoteTakerbutton{
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+    border: 2px solid black;
+    padding: 5px 10px;
+    background: transparent;
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+.NoteTakerDialog.active{
+    display: block;
+}
+.NoteTakerName{
+    margin-bottom: 10px;
+    border: 0;
+    padding: 10px;
+    border-radius: 12px;
+}
+.note{
+    background: rgb(255, 200, 255);
+    padding: 15px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 12px;
+    max-width: 400px;
+    border: 2px solid black;
+    height: fit-content;
+
+}
+
+.nameSection textarea, .noteSection textarea{
+    width: 90%;
+    background: rgb(255, 255, 255);
+    padding: 12px;
+    margin: 0;
+    border-radius: 12px;
+    resize: none;
+    max-height: fit-content;
+}
+.nameSection textarea{
+    font-size: 20px;
+}
+.nameSection::-webkit-scrollbar{
+    display: none;
+}
+.noteSection textarea{
+    font-size: 15px;
+    scrollbar-width: none;
+}
+.noteTitle{
+    margin: 20px 0 5px 0;
+    font-size: 18px;
+    color: rgb(117, 117, 117);
 }

@@ -11,20 +11,26 @@ let elapsed = 0;
 let running = false;
 let timer;
 let total = 0;
+let splits = JSON.parse(localStorage.getItem("splits")) || [];
 
-
+splits.forEach(splitTime => {
+    splitContainer.innerHTML += `<p>${splitTime}</p>`;
+});
 saveTime = () => {
     localStorage.setItem("elapsed", elapsed);
-    localStorage.setItem("total", total)
+    localStorage.setItem("total", total);
+    localStorage.setItem("displayValue", display.value);
 }
 let savedElapsed = localStorage.getItem("elapsed");
 let savedTotal = localStorage.getItem("total");
+display.value = localStorage.getItem("displayValue")
 if(savedElapsed !== null){
     elapsed = Number(savedElapsed);
 }
 if(savedTotal !== null){
     total = Number(savedTotal);
 }
+
 displayFormat(total);
 function displayFormat(ms){
     if(ms >= 359000000){
@@ -38,6 +44,11 @@ function displayFormat(ms){
 };
 function splitt(){
     if(display.value !== "00:00:00.000" && running){
+        const splitTime = display.value;
+
+        splits.push(splitTime);
+
+        localStorage.setItem("splits", JSON.stringify(splits));
         splitContainer.innerHTML += `<p>${display.value}</p>`}
     else
         return;
@@ -59,7 +70,9 @@ playbutton.addEventListener("click", () => {
         timer = setInterval(() => {
             let now = Date.now();
             total = elapsed + (now - startTime);
+            saveTime();
             displayFormat(total);
+            
         },50)
 
 });
@@ -67,6 +80,9 @@ playbutton.addEventListener("click", () => {
 
 resetButton.addEventListener("click", () => {
     clearInterval(timer);
+    splits = [];
+    localStorage.removeItem("splits");
+    splitContainer.innerHTML = "";
     running = false;
     elapsed = 0;
     startTime = undefined;
