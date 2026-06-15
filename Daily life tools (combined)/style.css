@@ -511,26 +511,49 @@ body.no-scroll{
 }
 
 .nameSection textarea, .noteSection textarea{
+    
     width: 90%;
     background: rgb(255, 255, 255);
     padding: 12px;
     margin: 0;
     border-radius: 12px;
     resize: none;
-    max-height: fit-content;
+    height: fit-content;
 }
 .nameSection textarea{
     font-size: 20px;
 }
-.nameSection::-webkit-scrollbar{
-    display: none;
-}
+
+
 .noteSection textarea{
     font-size: 15px;
-    scrollbar-width: none;
 }
 .noteTitle{
     margin: 20px 0 5px 0;
     font-size: 18px;
     color: rgb(117, 117, 117);
+}
+textarea, input{
+    scrollbar-width: none;
+    outline: none;
+}
+textarea::-webkit-scrollbar{
+    display: none;
+}
+.note button{
+    border: 0;
+    background: rgb(200, 189, 221);
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+    padding: 4px;
+    border-radius: 5px;
+    transition: 0.3s;
+
+}
+.note button:hover{
+    transform: translateY(-10%);
+}
+.note button:active{
+    transform: translateY(0);
 }
