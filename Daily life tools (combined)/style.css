@@ -321,13 +321,41 @@ body.no-scroll{
     margin: 10px;
     text-decoration: none;
 }
+.overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    display: none;
+    z-index: 3999;
+}
+.overlay.active{
+    display: block;
+}
 .linkImg{
     border-radius: 50%;
     border: 10px solid transparent;
-}
-.linkImg:hover{
     padding: 4px;
-    border: 5px solid rgba(0, 0, 0, 0.097);
+    position: relative;
+    transition: 0.3s;
+    z-index: 1;
+}
+.BookmarkMenu{
+    transform: translate(-100%, 10%);
+    text-align: center;
+    position: absolute;
+    border: 0;
+    background: transparent;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.BookmarkMenu:hover{
+    background: wheat;
+    border: 5px solid rgba(128, 128, 128, 0.486);
 }
 .clock {
   width: 250px;
@@ -556,4 +584,29 @@ textarea::-webkit-scrollbar{
 }
 .note button:active{
     transform: translateY(0);
+}
+.BookmarksMenu{
+    background: rgb(235, 255, 198);
+    padding:10px ;
+    height: fit-content;
+    width: 150px;
+    text-align: center;
+    border: 5px solid black;
+    z-index: 4000;
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    margin: 400px auto;
+    border-radius: 30px;
+    display: none;
+}
+.BookmarksMenu button{
+    display: block;
+    margin: 10px auto;
+    border: 0;
+    background: rgb(209, 166, 252);
+    border-radius: 5px;
+}
+.BookmarksMenu.active{
+    display: block;
 }
