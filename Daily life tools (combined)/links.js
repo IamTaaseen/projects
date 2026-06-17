@@ -74,3 +74,10 @@ Bookmarkdelete.addEventListener("click", (e) => {
     BookmarksMenu.classList.remove("active");
   }
 });
+document.addEventListener("click", (e) => {
+    if(!e.target.classList.contains("BookmarksMenu")){
+      overlay.classList.remove("active");
+      BookmarksMenu.classList.remove("active");
+
+    }
+});
