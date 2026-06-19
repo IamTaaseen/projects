@@ -9,12 +9,14 @@ const NoteTakerName = document.querySelector(".NoteTakerName");
 let id;
 let name;
 let notes;
+let noteId
+let noteEl;
 let noteinfo = JSON.parse(localStorage.getItem("noteinfo")) || [];
 //localStorage.removeItem("noteinfo");
 noteinfo.forEach(info => {
     NoteContainer.insertAdjacentHTML(
         "beforeend",
-        `<div class="note" id="${info.id}">
+        `<div class="note" id="${info.id}" data-name="${info.name}" data-note="${info.notes}">
                 <div class="nameSection">
                     <h3 class = "noteTitle">Name</h3>
                     <textarea readonly>${info.name}</textarea>
@@ -23,7 +25,8 @@ noteinfo.forEach(info => {
                     <h3 class="noteTitle">Notes</h3>
                     <textarea readonly  class="noteTextarea">${info.notes}</textarea>
                 </div>
-                <button class="delete">Delete</button>
+                <button class="utilButton delete">Delete</button>
+                <button class="utilButton edit">Edit</button>
          </div>`
     );
 });
@@ -44,7 +47,7 @@ done.addEventListener("click", () => {
         NoteContainer.insertAdjacentHTML(
             "beforeend",
             
-           `<div class="note" id="${id}">
+           `<div class="note" id="${id}" data-name="${name}" data-note="${notes}">
                 <div class="nameSection">
                     <h3 class = "noteTitle">Name</h3>
                     <textarea readonly>${name}</textarea>
@@ -54,6 +57,8 @@ done.addEventListener("click", () => {
                     <textarea readonly class="noteTextarea">${notes}</textarea>
                 </div>
                 <button class="delete">Delete</button>
+                <button class="utilButton edit">Edit</button>
+
          </div>`
         )
         noteinfo.push({
@@ -68,14 +73,26 @@ done.addEventListener("click", () => {
 });
 NoteContainer.addEventListener("click", (e) => {
     if(e.target.classList.contains("delete")){
-        const noteEl = e.target.closest(".note");
+        noteEl = e.target.closest(".note");
         if(!noteEl) return;
-        const noteId = Number(noteEl.id);
+        noteId = Number(noteEl.id);
         noteinfo = noteinfo.filter(note => note.id !== noteId);
         localStorage.setItem("noteinfo", JSON.stringify(noteinfo));
         noteEl.remove();
     }
-    else{
-        return;
+});
+NoteContainer.addEventListener("click", (e) => { 
+    if(e.target.classList.contains("edit")){
+        noteEl = e.target.closest(".note");
+        if(!noteEl) return;
+        noteId = Number(noteEl.id);
+        NoteTakerName.value = noteEl.dataset.name;
+        NoteTakerInput.value = noteEl.dataset.note;
+        NoteTakerDialog.classList.toggle("active");
+        done.addEventListener("click", () => {
+            noteinfo = noteinfo.filter(note => note.id !== noteId);
+            localStorage.setItem("noteinfo", JSON.stringify(noteinfo));
+            noteEl.remove();
+        });;
     }
-})
+});

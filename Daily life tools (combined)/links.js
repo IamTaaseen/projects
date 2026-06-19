@@ -10,7 +10,7 @@ let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
 bookmarks.forEach(bookmark => {
 bookmarksContainer.insertAdjacentHTML(
   "beforeend",
-    `<a href="${bookmark.url}" target="_blank" class="link" id="${bookmark.id}">
+    `<a href="${bookmark.url}" target="_blank" class="link" id="${bookmark.id}" data-name="${bookmark.name}" data-url="${bookmark.url}">
         <img src="${bookmark.icon}" alt="${bookmark.name}" width="40" class="linkImg">
         <button class="BookmarkMenu">⋮</button>
     </a>`
@@ -38,7 +38,7 @@ document.querySelector(".ok").addEventListener("click", () => {
     bookmarksContainer.insertAdjacentHTML(
           "beforeend",
 
-          `<a href="${url}" target="_blank" class="link" id="${id}">
+          `<a href="${url}" target="_blank" class="link" id="${id}" data-name="${name}" data-url="${url}">
               <img src="${icon}" alt="${name}" width="40" class="linkImg">
               <button class="BookmarkMenu">⋮</i></button>
             
@@ -48,11 +48,15 @@ document.querySelector(".ok").addEventListener("click", () => {
 
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
     dialog.close();
+    document.querySelector(".addName").value = "";
+    document.querySelector(".addUrl").value = "";
   }
 })
 const BookmarksMenu = document.querySelector(".BookmarksMenu");
 const overlay = document.querySelector(".overlay");
 const Bookmarkdelete = document.querySelector(".Bookmarkdelete");
+const Bookmarkedit = document.querySelector(".Bookmarkedit");
+
 bookmarksContainer.addEventListener("click", (e) => {
   if(e.target.classList.contains("BookmarkMenu")){
     e.preventDefault();
@@ -61,7 +65,7 @@ bookmarksContainer.addEventListener("click", (e) => {
     BookmarksMenu.classList.toggle("active");
     overlay.classList.toggle("active");
     BookmarkEl = e.target.closest(".link");
-    console.log(BookmarkEl);
+    // console.log(BookmarkEl);
     BookmarkId = Number(BookmarkEl.id);
   }
 })
@@ -78,6 +82,25 @@ document.addEventListener("click", (e) => {
     if(!e.target.classList.contains("BookmarksMenu")){
       overlay.classList.remove("active");
       BookmarksMenu.classList.remove("active");
-
     }
+});
+
+document.addEventListener("click", (e) => { 
+  if(e.target.classList.contains("BookmarksMenu")){
+    BookmarkEl = e.target.closest(".link");
+    // console.log(BookmarkEl);
+    BookmarkId = Number(BookmarkEl.id);
+  };
+});
+Bookmarkedit.addEventListener("click", () => {
+    document.querySelector(".addName").value = BookmarkEl.dataset.name;
+    document.querySelector(".addUrl").value = BookmarkEl.dataset.url;
+    dialog.showModal();
+    //console.log(dialog);
+    document.querySelector(".ok").addEventListener("click", () => {
+        BookmarkId = Number(BookmarkEl.id);
+        bookmarks = bookmarks.filter(each => each.id !== BookmarkId);
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+        BookmarkEl.remove();
+    });
 });

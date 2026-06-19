@@ -3,7 +3,6 @@ fetch("nav.html")
 .then(data => {
     document.getElementById("nav-holder").innerHTML = data;
 
-    // now nav exists, safe to run code
     const menuMenu = document.getElementById("menu-menu");
     const NavigationButton = document.getElementById("nav-button");
     const NavigationContainer = document.getElementById("nav-container");
