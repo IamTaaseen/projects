@@ -530,12 +530,13 @@ textarea::-webkit-scrollbar{
 
 /*Timer*/
 #timer-display{
+    width: 600px;
     text-align: center;
     display: block;
     margin: 0 auto;
     border: 0;
     background-color: aliceblue;
-    font-size: 40px;
+    font-size: 45px;
     margin-top: 50px;
     height: 80px;
 }
@@ -569,6 +570,11 @@ textarea::-webkit-scrollbar{
     height: 60px;
     border-radius: 50%;
     background-color: rgb(143, 255, 143);
+}
+#buttons-container{
+    width: 600px;
+    display: block;
+    margin: 0 auto;
 }
 
 #buttons-container button{
