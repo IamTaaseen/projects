@@ -1,0 +1,125 @@
+body{
+    background-color: black;
+    margin: 0;
+}
+body.no-scroll{
+    overflow: hidden;
+}
+#es{
+    margin-top: 50px;
+}
+.dashboard-list{
+    list-style-type: none;
+    background-color: aliceblue;
+    max-width: 600px;
+}
+.dashboard-list a{
+    text-decoration: none;
+    color: rgb(121, 118, 118);
+
+}
+
+#up-nav{
+    height: 40px;
+    width: 100%;
+    background-color: aliceblue;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+#nav-button{
+    margin: 5px;
+    border: 0;
+    background-color: rgb(148, 255, 134);
+    padding: 3px 5px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    transition: .2s ease;
+}
+#nav-button:hover{
+    background-color: rgb(69, 255, 45);
+}
+#nav-button:active{
+    opacity: .5;
+}
+#menu-menu{
+    text-align: center;
+    background-color: rgb(94, 255, 161);
+    width: 140px ;
+    margin-left: 20px;
+    margin-top: 50px;
+    padding: 0;
+    max-height: 0;
+    font-size: 0;
+    transition: .25s ease ;
+    position: fixed;
+    top: 0;
+    border-radius: 12px;
+    z-index: 1000;
+}
+#menu-menu li{
+    list-style-type: none;
+    margin-top: 5px;
+}
+#menu-menu a {
+    display: block;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.59);
+
+}
+#menu-menu.active{
+    padding: 5px 10px;
+    max-height: 350px;
+    font-size: 19px;
+}
+#menu-menu li:hover{
+    background-color: lime;
+}
+#menu-menu ul{
+    margin: 0;
+    padding: 0;
+}
+
+body::selection {
+    background: #ffffff;
+    color: #000;
+}
+#firstLayer{
+    margin-top: 70px;
+}
+.terminalInput{
+
+    margin-left:10px ;
+    outline: none;
+    font-size: 30px;
+    border: none;
+    resize: none;
+    scrollbar-width: none;
+    width: 100%;
+    background: black;
+    color: white;
+}
+.terminalInput::-webkit-scrollbar{
+    display: none;
+}
+.cmdLine{
+    color: white;
+    font-size: 30px;
+}
+.cliContainer{
+    display: flex;
+}
+.showOutput{
+    overflow-wrap: break-word;
+    word-break: break-all;
+    color: white;
+
+    font-size: 30px;
+    white-space: pre-wrap;
+}
+#pre-text{
+    font-size: 15px;
+    color: white;
+
+}
